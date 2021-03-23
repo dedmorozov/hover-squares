@@ -1,0 +1,8 @@
+.Field {
+  width: 100%;
+  border-collapse: collapse;
+
+  &__square {
+    border: 1px solid black;
+  }
+}

@@ -1,0 +1,51 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 400px;
+  padding: 30px 0;
+
+  &__select {
+    height: 30px;
+    width: 45%;
+    cursor: pointer;
+  }
+
+  &__button {
+    width: 45%;
+    height: 30px;
+    background-color: #497ad4;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    transition: 0.3s;
+    cursor: pointer;
+    
+    &:hover {
+      background-color: #00379e;
+    }
+
+    &:disabled {
+      background-color: #9b9a9a17;
+      color: #777777;
+      cursor: not-allowed;
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .header {
+    flex-direction: column;
+    width: 100%;
+    padding: 10px 0;
+
+    &__select,
+    &__button {
+      width: 100%;
+      margin: 5px 0;
+    }
+  }
+}
