@@ -10,6 +10,7 @@ export const App = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [squaresCount, setSquaresCount] = useState(0);
   const [isModeSelected, setIsModeSelected] = useState(false);
+  const [hovered, setHovered] = useState([]);
 
   useEffect(async() => {
     const modes = await loadModes();
@@ -25,14 +26,15 @@ export const App = () => {
   const onChangeSelect = (e) => {
     const { value } = e.target;
 
+    setHovered([]);
     setIsModeSelected(true);
     setSquaresCount(+value);
   };
 
   return (
-    <div className="container">
-      <div className="App">
-        {isLoaded === true ? (
+    <main className="container">
+      <section className="App">
+        {isLoaded ? (
           <>
             <Header
               modesList={modesList}
@@ -45,13 +47,15 @@ export const App = () => {
               && (
                 <Field
                   squaresCount={squaresCount}
+                  hovered={hovered}
+                  setHovered={setHovered}
                 />
               )}
           </>
         )
           : <p className="App__loading">Loading...</p>
         }
-      </div>
-    </div>
+      </section>
+    </main>
   );
 };

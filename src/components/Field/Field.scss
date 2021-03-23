@@ -1,28 +1,63 @@
 .Field {
   display: flex;
+  justify-content: space-between;
   width: 100%;
   
   &__squares {
-    width: 50%;
+    width: 49%;
     border-collapse: collapse;
   }
 
   &__square {
     border: 1px solid black;
-    margin: 10px;
   }
 }
 
 .hovered {
-  width: 50%;
+  width: 49%;
   max-height: 400px;
   overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 3px;
+  }
+   
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+   
+  &::-webkit-scrollbar-thumb {
+    background-color: rgb(200, 200, 200);
+  }
   
   &__item {
-    padding: 10px;
-    margin: 10px;
+    padding: 11px;
+    margin: 10px 0;
     background-color: blanchedalmond;
     border-radius: 5px;
     list-style: none;
+    text-align: center;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .Field {
+    display: block;
+
+    &__squares {
+      width: 100%;
+    }
+  }
+
+  .hovered {
+    width: 100%;
   }
 }

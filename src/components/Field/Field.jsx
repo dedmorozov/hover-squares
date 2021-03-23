@@ -1,11 +1,12 @@
-/* eslint-disable no-console */
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import './Field.scss';
 
-export const Field = ({ squaresCount }) => {
-  const [hovered, setHovered] = useState([]);
-
+export const Field = ({
+  squaresCount,
+  hovered,
+  setHovered,
+}) => {
   const getSquares = (squaresAmount) => {
     const squares = [];
 
@@ -14,11 +15,6 @@ export const Field = ({ squaresCount }) => {
     }
 
     return squares;
-  };
-
-  const squareStyle = {
-    width: `calc(100% / ${squaresCount})`,
-    height: `calc(400px / ${squaresCount})`,
   };
 
   const handleHover = (e) => {
@@ -42,6 +38,19 @@ export const Field = ({ squaresCount }) => {
         .splice((hovered
           .findIndex(item => item === [row, col]), 1)));
     }
+  };
+
+  if (hovered.length === 0) {
+    document.querySelectorAll('.Field__square')
+      .forEach((item) => {
+        // eslint-disable-next-line no-param-reassign
+        item.style.background = '';
+      });
+  }
+
+  const squareStyle = {
+    width: `calc(100% / ${squaresCount})`,
+    height: `calc(400px / ${squaresCount})`,
   };
 
   return (
@@ -83,4 +92,6 @@ export const Field = ({ squaresCount }) => {
 
 Field.propTypes = {
   squaresCount: PropTypes.number.isRequired,
+  hovered: PropTypes.arrayOf(PropTypes.array).isRequired,
+  setHovered: PropTypes.func.isRequired,
 };
