@@ -8,7 +8,6 @@ export const App = () => {
   const [modesList, setModesList] = useState({});
   const [isStarted, setIsStarted] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [isColored, setIsColored] = useState(false);
   const [squaresCount, setSquaresCount] = useState(0);
   const [isModeSelected, setIsModeSelected] = useState(false);
 
@@ -16,7 +15,7 @@ export const App = () => {
     const modes = await loadModes();
 
     setModesList(modes);
-    setIsLoaded(!isLoaded);
+    setIsLoaded(true);
   }, []);
 
   const handleStart = () => {
@@ -27,14 +26,13 @@ export const App = () => {
     const { value } = e.target;
 
     setIsModeSelected(true);
-    setIsColored(false);
     setSquaresCount(+value);
   };
 
   return (
     <div className="container">
       <div className="App">
-        {isLoaded ? (
+        {isLoaded === true ? (
           <>
             <Header
               modesList={modesList}
@@ -47,8 +45,6 @@ export const App = () => {
               && (
                 <Field
                   squaresCount={squaresCount}
-                  isColored={isColored}
-                  setIsColored={setIsColored}
                 />
               )}
           </>

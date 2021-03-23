@@ -14,7 +14,7 @@ export const Header = ({
   const { easyMode, normalMode, hardMode } = modesList;
 
   return (
-    <div className="App__header header">
+    <header className="App__header header">
       <select className="header__select" onChange={onChangeSelect}>
         <option hidden>Pick mode</option>
         <option value={easyMode.field}>
@@ -36,7 +36,7 @@ export const Header = ({
       >
         {!isModeSelected ? 'Choose mode' : !isStarted ? 'Start' : 'Have fun'}
       </button>
-    </div>
+    </header>
   );
 };
 
